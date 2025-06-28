@@ -33,13 +33,15 @@ export default function BlogPostFr({ params }: { params: { slug: string } }) {
           {new Date(post.date).toLocaleDateString("fr", { dateStyle: "long" })}
         </time>
       </div>
-      <Image
-        src={`/images/${post.coverImage}`}
-        alt={post.title}
-        width={800}
-        height={400}
-        className="rounded-md"
-      />
+      {post.coverImage && (
+        <Image
+          src={`/images/${post.coverImage}`}
+          alt={post.title}
+          width={800}
+          height={400}
+          className="rounded-md"
+        />
+      )}
       <Mdx code={post.body.code} />
       <PostNav current={post} all={allPosts} locale="fr" />
     </article>
