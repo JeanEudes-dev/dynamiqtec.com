@@ -1,0 +1,29 @@
+---
+title: "Images Open Graph dynamiques avec Vercel Edge Functions"
+date: "2025-06-29T11:30:00Z"
+author: "Jean-Eudes Assogba"
+coverImage: "og-edge-cover.png"
+description: "Créez des images OG dynamiques à la volée avec Vercel Edge Functions et @vercel/og."
+---
+
+# Images Open Graph dynamiques avec Vercel Edge Functions
+
+Les images Open Graph améliorent le partage social. Générez-les dynamiquement à la périphérie pour plus de personnalisation.
+
+## Configuration
+
+```bash
+npm install @vercel/og
+```
+
+## Route Edge
+
+- Utilise le runtime Edge (`export const runtime = 'edge'`).
+- Rend du JSX en image avec `ImageResponse`.
+- Paramètres : `title`, `locale`.
+
+## Avantages
+
+- OG personnalisé par page.
+- Sans backend ; entièrement sur CDN.
+- Génération rapide et mise en cache.
