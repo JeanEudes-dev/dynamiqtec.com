@@ -22,7 +22,7 @@ export default function BlogPostFr({ params }: { params: { slug: string } }) {
       <h1 className="text-3xl font-bold">{post.title}</h1>
       <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
         <Image
-          src="/me.jpeg"
+          src="/me.png"
           alt={post.author}
           width={32}
           height={32}
