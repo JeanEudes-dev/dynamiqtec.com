@@ -63,6 +63,42 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         />
       )}
       <Mdx code={post.body.code} />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://dynamiqtec.com/blog/${post.slug}`,
+            },
+            headline: post.title,
+            description: post.description,
+            image: post.coverImage
+              ? `https://dynamiqtec.com/images/${post.coverImage}`
+              : `https://dynamiqtec.com/api/og?title=${encodeURIComponent(
+                  post.title
+                )}&locale=en`, // Fallback to OG image
+            datePublished: new Date(post.date).toISOString(),
+            dateModified: new Date(post.date).toISOString(), // Assuming date is last mod date too
+            author: {
+              "@type": "Person",
+              name: post.author, // Assuming post.author is "Jean-Eudes Assogba"
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Dynamiqtec",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://dynamiqtec.com/dynamiqtec.png",
+              },
+            },
+          }),
+        }}
+      />
+
       <PostNav current={post} all={allPosts} locale="en" />
     </article>
   );

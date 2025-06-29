@@ -19,17 +19,17 @@ export default function HomeFr() {
     <section className="space-y-10">
       <div className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">
-          Jean-Eudes Assogba
+          Blog Dynamiqtec
         </h1>
         <p className="text-gray-500 dark:text-gray-400 max-w-prose">
-          Un laboratoire numérique pour le développement full-stack et l'IA.
-          Minimaliste, multilingue, ultra rapide.
+          Perspectives choisies à l'intersection de l'IA, du design et de
+          l'ingénierie — rédigées par Jean-Eudes Assogba.
         </p>
       </div>
 
       <div>
         <h2 className="text-sm uppercase tracking-wider text-gray-400">
-          Articles
+          Derniers Articles
         </h2>
         <PostListTable posts={posts} locale="fr" />
       </div>
