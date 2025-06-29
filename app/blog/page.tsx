@@ -1,6 +1,18 @@
 import { allPosts } from "contentlayer/generated";
 import PostListTable from "components/PostListTable";
 import SearchInput from "components/SearchInput";
+import { generateSEO } from "lib/seo";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return generateSEO({
+    title: "Blog Posts | Dynamiqtec",
+    description:
+      "Browse all published articles from Dynamiqtec on AI, design, and software engineering.",
+    url: "https://dynamiqtec.com/blog",
+    locale: "en",
+  });
+}
 
 export default function BlogIndex() {
   const posts = allPosts

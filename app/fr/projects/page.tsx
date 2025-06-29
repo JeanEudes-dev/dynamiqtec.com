@@ -1,3 +1,16 @@
+import { generateSEO } from "lib/seo";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return generateSEO({
+    title: "Projets",
+    description:
+      "Sélection de projets full-stack et IA réalisés par Jean-Eudes Assogba.",
+    url: "https://dynamiqtec.com/fr/projects",
+    locale: "fr",
+  });
+}
+
 const projects = [
   {
     title: "BrollyHub",

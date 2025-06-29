@@ -30,6 +30,37 @@ export default function RootLayout({
         <link rel="icon" href="/dynamiqtec.png" />
         <link rel="apple-touch-icon" href="/dynamiqtec.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  name: "Dynamiqtec",
+                  url: "https://dynamiqtec.com",
+                  logo: "https://dynamiqtec.com/dynamiqtec.png",
+                  sameAs: [
+                    "https://github.com/JeanEudes-dev",
+                    "https://www.linkedin.com/in/jean-eudes-assogba/",
+                    "https://twitter.com/jeaneudes_dev",
+                  ],
+                },
+                {
+                  "@type": "WebSite",
+                  name: "Dynamiqtec",
+                  url: "https://dynamiqtec.com",
+                  // potentialAction: {
+                  //   "@type": "SearchAction",
+                  //   target: "https://dynamiqtec.com/search?q={search_term_string}",
+                  //   "query-input": "required name=search_term_string",
+                  // },
+                },
+              ],
+            }),
+          }}
+        />
       </head>
 
       <body className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-50 transition-colors duration-300">

@@ -6,10 +6,21 @@ type SEOProps = {
 };
 
 export function generateSEO({ title, description, url, locale }: SEOProps) {
-  const siteName = "Dynamiqtec";
-  const defaultTitle = "Dynamiqtec Blog";
-  const defaultDesc =
-    "Curated insights from the intersection of AI, design, and engineering — crafted by Jean-Eudes Assogba.";
+  const siteName = "Dynamiqtec"; // Site name is likely fine as is, or could be localized if desired. For now, keep it simple.
+
+  let defaultTitle: string;
+  let defaultDesc: string;
+
+  if (locale === "fr") {
+    defaultTitle = "Blog Dynamiqtec";
+    defaultDesc =
+      "Perspectives choisies à l'intersection de l'IA, du design et de l'ingénierie — rédigées par Jean-Eudes Assogba.";
+  } else {
+    // Default to English
+    defaultTitle = "Dynamiqtec Blog";
+    defaultDesc =
+      "Curated insights from the intersection of AI, design, and engineering — crafted by Jean-Eudes Assogba.";
+  }
 
   const metaTitle = title ? `${title} | ${siteName}` : defaultTitle;
   const metaDesc = description || defaultDesc;

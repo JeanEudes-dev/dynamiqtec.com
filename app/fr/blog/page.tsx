@@ -4,21 +4,13 @@ import SearchInput from "components/SearchInput";
 import { generateSEO } from "lib/seo";
 import { Metadata } from "next";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const post = allPosts.find(
-    (p) => p.slug === params.slug && p.language === "en"
-  );
-  const url = `https://dynamiqtec.com/blog/${params.slug}`;
-
+export async function generateMetadata(): Promise<Metadata> {
   return generateSEO({
-    title: post?.title,
-    description: post?.description,
-    url,
-    locale: "en",
+    title: "Articles de Blog | Dynamiqtec",
+    description:
+      "Parcourez tous les articles publiés par Dynamiqtec sur l'IA, le design et l'ingénierie logicielle.",
+    url: "https://dynamiqtec.com/fr/blog",
+    locale: "fr",
   });
 }
 
