@@ -2,7 +2,7 @@
 
 A modern multilingual blog and portfolio built with Next.js, Contentlayer, and Tailwind CSS.
 
-## Features
+## Features 
 
 - ✍️ Write posts in Markdown/MDX (supports English and French)
 - 🌍 Multilingual routing (English & French)
