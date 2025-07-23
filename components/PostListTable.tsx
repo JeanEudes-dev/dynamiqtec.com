@@ -26,9 +26,9 @@ export default function PostListTable({
         </thead>
         <tbody>
           {posts.map((post) => {
-            const year = new Date(post.date).getFullYear();
             const url = `/${locale === "en" ? "" : "fr/"}blog/${post.slug}`;
             const formatted = new Date(post.date).toLocaleDateString(locale, {
+              month: "short",
               year: "numeric",
             });
 
