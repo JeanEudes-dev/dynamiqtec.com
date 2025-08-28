@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Mdx from "components/Mdx";
 import PostNav from "components/PostNav";
-import { generateSEO } from "lib/seo";
+import { generateSEO, generateArticleJsonLd } from "lib/seo";
 import { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -20,13 +20,22 @@ export async function generateMetadata({
   const post = allPosts.find(
     (p) => p.slug === params.slug && p.language === "en"
   );
+  
+  if (!post) {
+    return { title: "Post not found | Dynamiqtec" };
+  }
+  
   const url = `https://dynamiqtec.com/blog/${params.slug}`;
 
   return generateSEO({
-    title: post?.title,
-    description: post?.description,
+    title: post.title,
+    description: post.description,
     url,
     locale: "en",
+    type: "article",
+    image: post.coverImage,
+    publishedTime: post.date,
+    author: post.author,
   });
 }
 
@@ -67,35 +76,14 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": `https://dynamiqtec.com/blog/${post.slug}`,
-            },
-            headline: post.title,
+          __html: JSON.stringify(generateArticleJsonLd({
+            title: post.title,
             description: post.description,
-            image: post.coverImage
-              ? `https://dynamiqtec.com/images/${post.coverImage}`
-              : `https://dynamiqtec.com/api/og?title=${encodeURIComponent(
-                  post.title
-                )}&locale=en`, // Fallback to OG image
-            datePublished: new Date(post.date).toISOString(),
-            dateModified: new Date(post.date).toISOString(), // Assuming date is last mod date too
-            author: {
-              "@type": "Person",
-              name: post.author, // Assuming post.author is "Jean-Eudes Assogba"
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "Dynamiqtec",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://dynamiqtec.com/dynamiqtec.png",
-              },
-            },
-          }),
+            url: `https://dynamiqtec.com/blog/${post.slug}`,
+            author: post.author,
+            publishedTime: new Date(post.date).toISOString(),
+            image: post.coverImage,
+          })),
         }}
       />
 
